@@ -8200,6 +8200,8 @@ AVAILABLE_ELEMENT_COLORS = [
 
         <span class="n">counts_dict</span> <span class="o">=</span> <span class="p">{</span><span class="n">r</span><span class="p">:</span> <span class="mi">0</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">ALL_REGIONS</span><span class="p">}</span>
         <span class="n">counts_dict</span><span class="p">[</span><span class="s1">'International'</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">counts_dict</span><span class="p">[</span><span class="s1">'Global_All'</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">counts_dict</span><span class="p">[</span><span class="s1">'Global_Main'</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
         <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">df_unique_regional</span><span class="p">[</span><span class="s1">'cleaned_region'</span><span class="p">]:</span>
             <span class="k">if</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">counts_dict</span><span class="p">:</span> <span class="n">counts_dict</span><span class="p">[</span><span class="n">r</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
 
@@ -9333,11 +9335,11 @@ AVAILABLE_ELEMENT_COLORS = [
 <span class="s2">                        } else {</span>
 <span class="s2">                            const stageInfo = STAGES_DATA[currentStage]; let count = 0; let totalFilterCount = 1;</span>
 <span class="s2">                            if (selectedElementFilter) {</span>
-<span class="s2">                                stageInfo.events[r]?.forEach(ev =&gt; { if(ev.element === selectedElementFilter) count++; });</span>
+<span class="s2">                                stageInfo.events[r]?.forEach(ev =&gt; { if(ev.element === selectedElementFilter) count++; }); stageInfo.events['Global_All']?.forEach(ev =&gt; { if(ev.element === selectedElementFilter) count++; }); stageInfo.events['Global_Main']?.forEach(ev =&gt; { if(ev.element === selectedElementFilter) count++; });</span>
 <span class="s2">                                totalFilterCount = 0; Object.values(stageInfo.events).forEach(reg =&gt; reg.forEach(ev =&gt; { if(ev.element===selectedElementFilter) totalFilterCount++; }));</span>
 <span class="s2">                            } else if (selectedPathFilter) {</span>
 <span class="s2">                                const pElements = Object.keys(stageInfo.hierarchy[selectedPathFilter]["elements"]);</span>
-<span class="s2">                                stageInfo.events[r]?.forEach(ev =&gt; { if(pElements.includes(ev.element)) count++; });</span>
+<span class="s2">                                stageInfo.events[r]?.forEach(ev =&gt; { if(pElements.includes(ev.element)) count++; }); stageInfo.events['Global_All']?.forEach(ev =&gt; { if(pElements.includes(ev.element)) count++; }); stageInfo.events['Global_Main']?.forEach(ev =&gt; { if(pElements.includes(ev.element)) count++; });</span>
 <span class="s2">                                totalFilterCount = 0; Object.values(stageInfo.events).forEach(reg =&gt; reg.forEach(ev =&gt; { if(pElements.includes(ev.element)) totalFilterCount++; }));</span>
 <span class="s2">                            } else {</span>
 <span class="s2">                                count = (stageInfo.counts[r] || 0) + (stageInfo.counts['Global_All'] || 0) + (stageInfo.counts['Global_Main'] || 0); totalFilterCount = stageInfo.total || 1;</span>
